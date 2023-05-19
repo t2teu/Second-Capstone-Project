@@ -1,0 +1,28 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.image-container {
+  display: flex;
+  height: 100%;
+  flex-wrap: wrap;
+}
+
+.image-container .col {
+  padding: 0;
+}
+
+.image-container img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+img:hover {
+    height: 120%;
+    width: 120%;
+    transition: 0.5s;
+}
