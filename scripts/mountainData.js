@@ -531,25 +531,25 @@ const mountainsArray = [
 
 // Function to handle dropdown selection change
 function selectMountain() {
-    var selectElement = document.getElementById("mountainSelect");
-    var selectedMountainIndex = selectElement.selectedIndex;
-    var selectedMountain = mountainsArray[selectedMountainIndex];
+    const selectElement = document.getElementById("mountainSelect");
+    const selectedMountainIndex = selectElement.selectedIndex;
+    const selectedMountain = mountainsArray[selectedMountainIndex];
     
     // Display mountain image
-    var imageElement = document.getElementById("mountainImage");
+    const imageElement = document.getElementById("mountainImage");
     imageElement.src = "images/" + selectedMountain.img;
     
     // Display mountain information
-    var nameElement = document.getElementById("mountainName");
+    const nameElement = document.getElementById("mountainName");
     nameElement.textContent = selectedMountain.name;
     
-    var elevationElement = document.getElementById("mountainElevation");
+    const elevationElement = document.getElementById("mountainElevation");
     elevationElement.textContent = "Elevation: " + selectedMountain.elevation + " feet";
     
-    var effortElement = document.getElementById("mountainEffort");
+    const effortElement = document.getElementById("mountainEffort");
     effortElement.textContent = "Effort: " + selectedMountain.effort;
     
-    var descElement = document.getElementById("mountainDesc");
+    const descElement = document.getElementById("mountainDesc");
     descElement.textContent = selectedMountain.desc;
   }
   

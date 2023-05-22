@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Pokemon Font';
+    src:url(../images/pokemon-ds-font.ttf);
+}
+
 html,
 body {
   height: 100%;
@@ -21,8 +26,52 @@ body {
   object-fit: cover;
 }
 
-img:hover {
-    height: 120%;
-    width: 120%;
-    transition: 0.5s;
+
+body {
+    background-color: #111;
+    color: #fff;
+    text-align: center;
+  }
+
+  .container {
+    margin-top: 80px;
+  }
+
+@keyframes teleport {
+  0% {
+    transform: translateY(5px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  51% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
+
+
+.img-fluid {
+    margin-top: 10px;
+    height: 40%;
+}
+
+.img-fluid:hover {
+  content: url(../images/redsquareHover.png);
+  margin-top: 10px;
+  height: 40%;
+  animation: teleport 0.3s infinite steps(1);
+}
+
+#textbox {
+    height: 100px;
+}
+
+p {
+    font-family: 'Pokemon Font', serif;
+    font-size: 50px;
+    margin-top: 50px;
+}
+
