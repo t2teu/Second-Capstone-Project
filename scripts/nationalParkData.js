@@ -6859,44 +6859,217 @@ const nationalParksArray = [
     }
 ]
 
-function search(event) {
-    if (event.key === 'Enter') {
-      const query = searchInput.value.toLowerCase();
-      searchResults.innerHTML = '';
-      const results = nationalParksArray.filter(park => park.State.toLowerCase().includes(query));
+const parkTypesArray = [
+    "National Park",
+    "National Monument",
+    "Recreation Area",
+    "Scenic Trail",
+    "Battlefield",
+    "Historic",
+    "Memorial",
+    "Preserve",
+    "Island",
+    "River",
+    "Seashore",
+    "Trail",
+    "Parkway"
+]
+
+const locationsArray = [
+    "Alabama",
+    "Alaska",
+    "American Samoa",
+    "Arizona",
+    "Arkansas",
+    "California",
+    "Colorado",
+    "Connecticut",
+    "Delaware",
+    "DC",
+    "Florida",
+    "Georgia",
+    "Guam",
+    "Hawaii",
+    "Idaho",
+    "Illinois",
+    "Indiana",
+    "Iowa",
+    "Kansas",
+    "Kentucky",
+    "Louisiana",
+    "Maine",
+    "Maryland",
+    "Massachusetts",
+    "Michigan",
+    "Minnesota",
+    "Mississippi",
+    "Missouri",
+    "Montana",
+    "Nebraska",
+    "Nevada",
+    "New Hampshire",
+    "New Jersey",
+    "New Mexico",
+    "New York",
+    "North Carolina",
+    "North Dakota",
+    "Ohio",
+    "Oklahoma",
+    "Oregon",
+    "Pennsylvania",
+    "Puerto Rico",
+    "Rhode Island",
+    "South Carolina",
+    "South Dakota",
+    "Tennessee",
+    "Texas",
+    "Utah",
+    "Vermont",
+    "Virgin Islands",
+    "Virginia",
+    "Washington",
+    "West Virginia",
+    "Wisconsin",
+    "Wyoming"
+]
+
+const searchByStateCheckbox = document.getElementById('searchByStateCheckbox');
+const searchByTypeCheckbox = document.getElementById('searchByTypeCheckbox');
+const locationDropdownContainer = document.getElementById('locationDropdownContainer');
+const parkTypeDropdownContainer = document.getElementById('parkTypeDropdownContainer');
+const locationSelect = document.getElementById('locationSelect');
+const parkTypeSelect = document.getElementById('parkTypeSelect');
+const searchBtn = document.getElementById('searchBtn');
+const searchResults = document.getElementById('searchResults');
+
+function toggleLocationDropdown() {
+  if (searchByStateCheckbox.checked) {
+    locationDropdownContainer.style.display = 'block';
+  } else {
+    locationDropdownContainer.style.display = 'none';
+    locationSelect.value = ''; // Clear the selected value
+  }
+}
+
+function toggleParkTypeDropdown() {
+  if (searchByTypeCheckbox.checked) {
+    parkTypeDropdownContainer.style.display = 'block';
+  } else {
+    parkTypeDropdownContainer.style.display = 'none';
+    parkTypeSelect.value = ''; // Clear the selected value
+  }
+}
+
+function populateLocationDropdown() {
+    const defaultOption = document.createElement('option');
+    defaultOption.value = '';
+    defaultOption.textContent = 'All National Parks';
+    locationSelect.appendChild(defaultOption);
   
-      // display search results
-      if (results.length > 0) {
-        const row = document.createElement('div');
-        row.classList.add('row', 'row-cols-1', 'row-cols-md-3', 'g-4');
+    locationsArray.forEach(location => {
+      const option = document.createElement('option');
+      option.value = location;
+      option.textContent = location;
+      locationSelect.appendChild(option);
+    });
+  }
   
-        results.forEach(park => {
-          const card = document.createElement('div');
-          card.classList.add('card', 'mb-3');
-          card.innerHTML = `
-            <div class="card-body">
-              <h3 class="card-title">${park.LocationName}</h3>
-              <p class="card-text">Address: ${park.Address}</p>
-              <p class="card-text">City: ${park.City}</p>
-              <p class="card-text">State: ${park.State}</p>
-              <p class="card-text">Zip Code: ${park.ZipCode}</p>
-              <p class="card-text">Phone: ${park.Phone}</p>
-              <p class="card-text">Fax: ${park.Fax}</p>
-              <p class="card-text">Latitude: ${park.Latitude}</p>
-              <p class="card-text">Longitude: ${park.Longitude}</p>
-            </div>
-          `;
-          const col = document.createElement('div');
-          col.classList.add('col');
-          col.appendChild(card);
-          row.appendChild(col);
-        });
+  function populateParkTypeDropdown() {
+    const defaultOption = document.createElement('option');
+    defaultOption.value = '';
+    defaultOption.textContent = 'Choose a Park Type';
+    parkTypeSelect.appendChild(defaultOption);
   
-        searchResults.appendChild(row);
-      } else {
-        searchResults.textContent = 'No results found.';
-      }
+    parkTypesArray.forEach(parkType => {
+      const option = document.createElement('option');
+      option.value = parkType;
+      option.textContent = parkType;
+      parkTypeSelect.appendChild(option);
+    });
+  }
+
+function search(selectedLocation, selectedParkType) {
+  const results = nationalParksArray.filter(park => {
+    if (selectedLocation && selectedParkType) {
+      return (
+        park.State === selectedLocation &&
+        park.LocationName.includes(selectedParkType)
+      );
+    } else if (selectedLocation) {
+      return park.State === selectedLocation;
+    } else if (selectedParkType) {
+      return park.LocationName.includes(selectedParkType);
+    }
+    return true;
+  });
+
+  return results;
+}
+
+function handleSearch() {
+    const selectedLocation = locationSelect.value;
+    const selectedParkType = parkTypeSelect.value;
+    const results = search(selectedLocation, selectedParkType);
+    searchResults.innerHTML = '';
+  
+    if (results.length > 0) {
+      const gridContainer = document.createElement('div');
+      gridContainer.classList.add('row', 'row-cols-1', 'row-cols-md-2', 'row-cols-lg-3', 'g-4');
+  
+      results.forEach(result => {
+        const parkCard = document.createElement('div');
+        parkCard.classList.add('card');
+  
+        const parkCardBody = document.createElement('div');
+        parkCardBody.classList.add('card-body');
+  
+        const parkTitle = document.createElement('h5');
+        parkTitle.classList.add('card-title');
+        parkTitle.textContent = result.LocationName;
+  
+        const parkAddress = document.createElement('p');
+        parkAddress.classList.add('card-text');
+        parkAddress.textContent = `${result.Address}, ${result.City}, ${result.State}, ${result.ZipCode}`;
+  
+        const parkPhone = document.createElement('p');
+        parkPhone.classList.add('card-text');
+        parkPhone.textContent = `Phone: ${result.Phone}`;
+  
+        const parkFax = document.createElement('p');
+        parkFax.classList.add('card-text');
+        parkFax.textContent = `Fax: ${result.Fax}`;
+  
+        const parkLink = document.createElement('a');
+        parkLink.classList.add('btn', 'btn-primary');
+        parkLink.href = result.Visit;
+        parkLink.textContent = 'Visit Website';
+  
+        parkCardBody.appendChild(parkTitle);
+        parkCardBody.appendChild(parkAddress);
+        parkCardBody.appendChild(parkPhone);
+        parkCardBody.appendChild(parkFax);
+        parkCardBody.appendChild(parkLink);
+        parkCard.appendChild(parkCardBody);
+        gridContainer.appendChild(parkCard);
+      });
+  
+      searchResults.appendChild(gridContainer);
+    } else {
+      const noResultsElement = document.createElement('p');
+      noResultsElement.textContent = 'No parks found.';
+      searchResults.appendChild(noResultsElement);
     }
   }
   
-  searchInput.addEventListener('keyup', search);
+  
+
+searchByStateCheckbox.addEventListener('change', toggleLocationDropdown);
+searchByTypeCheckbox.addEventListener('change', toggleParkTypeDropdown);
+searchBtn.addEventListener('click', handleSearch);
+
+// Initially hide the dropdowns
+locationDropdownContainer.style.display = 'none';
+parkTypeDropdownContainer.style.display = 'none';
+
+populateLocationDropdown();
+populateParkTypeDropdown();

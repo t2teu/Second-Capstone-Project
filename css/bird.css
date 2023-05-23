@@ -1,0 +1,30 @@
+.bird-image {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    animation-name: swoop;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    width: 100px;
+    height: auto;
+}
+
+@keyframes swoop {
+    0% {
+        top: -100px;
+        left: 100%;
+        opacity: 0;
+    }
+
+    50% {
+        top: 50%;
+        left: 50%;
+        opacity: 1;
+    }
+
+    100% {
+        top: 20%;
+        left: -20%;
+        opacity: 0;
+    }
+}

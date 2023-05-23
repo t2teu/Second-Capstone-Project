@@ -3,19 +3,12 @@
     src:url(../images/pokemon-ds-font.ttf);
 }
 
-body {
-    background-image:url(../images/background.png);
-    padding-top: 60px;
+* {
+    font-family: 'Pokemon Font', serif;
+    font-size: 20px;
+    font-weight: bold
 }
 
-.navbar {
-    border-bottom: 2px solid #343a40;
-}
-
-.navbar-brand img {
-    height: 40px;
-    width: auto;
-}
 
 h1 {
     margin-top: 20px;
@@ -57,4 +50,97 @@ h1 {
 
 h3 {
     font-family: 'Pokemon Font', serif;
+    font-weight: bold;
 }
+
+.image-container {
+    position: relative;
+    width: 371px;
+    height: 256px;
+  }
+  
+  .border-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+  }
+  
+  #mountainImage {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    width: 335px;
+    height: 220px;
+    z-index: 1;
+    margin-left: -2px;
+    margin-top: -2px;
+  }
+
+  body {
+    background-image: url(../images/background.png);
+  }
+  
+   .border-image {
+      width: 100%;
+    }
+
+    .card {
+      margin-top: 300px;
+    }
+
+    .image-container {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-details {
+      margin-top: 10px;
+    }
+  
+      .image-container {
+        position: relative;
+        max-width: 100%;
+        height: auto;
+      }
+  
+      .image-container img {
+        max-width: 100%;
+        height: auto;
+      }
+  
+      .border-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        z-index: 2;
+      }
+
+      #navbarlinksone {
+        position: absolute;
+        top: 15px;
+        left: 40px;
+      }
+      
+      #navbarlinkstwo {
+        position: absolute;
+        top: 15px;
+        left: 100px;
+      }
+      
+      #navbarlinksthree {
+        position: absolute;
+        top: 15px;
+        left: 235px;
+      }
+      
+      a {
+        text-decoration: none;
+        color: black;
+        font-size: 23px;
+      }

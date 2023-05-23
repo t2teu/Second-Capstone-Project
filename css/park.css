@@ -1,0 +1,57 @@
+@font-face {
+  font-family: 'Pokemon Font';
+  src: url(../images/pokemon-ds-font.ttf);
+}
+
+* {
+  font-family: 'Pokemon Font', serif;
+  font-size: 20px;
+  font-weight: bold
+}
+
+.form-select {
+    width: 200px;
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+
+.form-select {
+  display: inline;
+}
+
+body {
+  background-image: url(../images/background.png);
+}
+
+#navbarlinksone {
+  position: absolute;
+  top: 15px;
+  left: 40px;
+}
+
+#navbarlinkstwo {
+  position: absolute;
+  top: 15px;
+  left: 100px;
+}
+
+#navbarlinksthree {
+  position: absolute;
+  top: 15px;
+  left: 235px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  font-size: 23px;
+}
+
+.card-with-border {
+  background-image: url('../images/cardborder.png');
+  background-repeat: repeat;
+}
+
+.card-container {
+  margin: 15px;
+}

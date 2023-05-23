@@ -1,6 +1,13 @@
 @font-face {
-    font-family: 'Pokemon Font';
-    src:url(../images/pokemon-ds-font.ttf);
+  font-family: 'Pokemon Font';
+  src: url(../images/pokemon-ds-font.ttf);
+}
+
+body {
+  background-image: url(../images/background.png);
+  color: #000;
+  text-align: center;
+  font-weight: 500;
 }
 
 html,
@@ -8,6 +15,10 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+}
+
+.container {
+  margin-top: 80px;
 }
 
 .image-container {
@@ -26,16 +37,28 @@ body {
   object-fit: cover;
 }
 
+.img-fluid {
+  margin-top: 10px;
+  height: 20%;
+}
 
-body {
-    background-color: #111;
-    color: #fff;
-    text-align: center;
-  }
+.img-fluid:hover {
+  content: url(../images/redsquareHover.png);
+  margin-top: 10px;
+  height: 20%;
+  animation: teleport 0.3s infinite steps(1);
+}
 
-  .container {
-    margin-top: 80px;
-  }
+#textbox {
+  height: 80px;
+  margin-top: 90px;
+}
+
+p {
+  font-family: 'Pokemon Font', serif;
+  font-size: 30px;
+  margin-top: 50px;
+}
 
 @keyframes teleport {
   0% {
@@ -52,26 +75,27 @@ body {
   }
 }
 
-
-.img-fluid {
-    margin-top: 10px;
-    height: 40%;
+.form-select {
+  width: 200px;
+  font-size: 14px;
+  padding: 6px 12px;
 }
 
-.img-fluid:hover {
-  content: url(../images/redsquareHover.png);
-  margin-top: 10px;
-  height: 40%;
-  animation: teleport 0.3s infinite steps(1);
+@media (max-width: 767px) {
+  #textbox {
+    height: 60px; /* Adjust the height as per your requirements */
+  }
+  
+  .col-sm-6 {
+    flex: 0 0 50%; /* Display columns side by side */
+    max-width: 50%;
+  }
 }
 
-#textbox {
-    height: 100px;
-}
+#next {
+  height: 15px;
+  position: relative;
+  top: 60px;
 
-p {
-    font-family: 'Pokemon Font', serif;
-    font-size: 50px;
-    margin-top: 50px;
+  animation: teleport 0.5s infinite steps(1);
 }
-
