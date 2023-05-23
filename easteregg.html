@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=Q, initial-scale=1.0">
+    <link rel="stylesheet" href="css/easteregg.css">
+    <title>??????</title>
+</head>
+<body>
+    <video autoplay muted loop id="video-background">
+        <source src="images/horizon.mp4" type="video/mp4">
+      </video>
+
+      <div id="scrolling-text">
+        <p>
+          "Sometimes you stumble and scrape your knees while running the race.<br>
+          <br>
+          Somehow I’m back at square one, and it wouldn’t be the first time.<br>
+          <br>
+          The irony is I lost both of my jobs, but somehow I'm still hopeful.<br>
+          <br>
+          I tried so hard for others in the hope that this wouldn’t be like the last time, but it might take a last press, an extra squeeze until we reach a "not like last time".<br>
+          <br>
+          Don’t lose hope and hit that finish line, I’m rooting for you.<br>
+          <br>
+          I just can’t help but feel the burn of being a spectator.<br>
+          <br>
+          Until we meet again."<br>
+          <br>
+          <br>
+          <br>
+          - Sufiyan Athar Quershi
+        </p>
+      </div>
+      <audio autoplay loop volume="0.5">
+        <source src="images/sufiyan.mp3" type="audio/mp3">
+      </audio>
+      <script>
+        setTimeout(function() {
+          var scrollingText = document.getElementById("scrolling-text");
+          scrollingText.style.animationPlayState = "running";
+        }, 5000);
+      </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+@font-face {
+    font-family: 'Pokemon Font';
+    src: url(../images/pokemon-ds-font.ttf);
+  }
+  
+ * {
+    font-family: 'Pokemon Font', serif;
+    color: rgb(80,80,88);
+    font-size: 40px;
+    text-shadow: 2px 4px 4px rgb(161,161,162);
+    }
+
+  body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  #video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+
+  #content {
+    position: relative;
+    z-index: 1;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+  }
+
+  #scrolling-text {
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    animation-name: scroll-up;
+    animation-duration: 90s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes scroll-up {
+    0% {
+      transform: translateY(100vh);
+    }
+    100% {
+      transform: translateY(-200%);
+    }
+  }

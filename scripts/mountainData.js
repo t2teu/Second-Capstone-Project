@@ -569,6 +569,7 @@ for (let i = 0; i < mountains.length; i++) {
 }
 };
   
+
   function updateMountainInformation() {
     const mountainSelect = document.getElementById("mountainSelect");
     const selectedMountain = mountainSelect.value;
@@ -589,6 +590,7 @@ for (let i = 0; i < mountains.length; i++) {
   document.getElementById("effortFilter").addEventListener("change", function () {
     updateDropdown();
   });
+
   
   function updateDropdown() {
     const effortFilter = document.getElementById("effortFilter");

@@ -47,11 +47,46 @@ a {
   font-size: 23px;
 }
 
-.card-with-border {
-  background-image: url('../images/cardborder.png');
-  background-repeat: repeat;
+h1 {
+  text-align: center;
 }
 
-.card-container {
-  margin: 15px;
+label {
+  position: relative;
+  left: 42vw;
+}
+
+select {
+  position: relative;
+  left: 42vw;
+  margin-bottom: 10px;
+}
+
+input {
+  position: relative;
+  left: 42vw;
+  margin-bottom: 10px;
+}
+
+button {
+  position: relative;
+  left: 42vw;
+  margin-bottom: 90px;
+  font-family: 'Pokemon Font', serif;;
+  background-color: #f8f8a0;
+}
+
+.custom-card {
+  border: 10px solid #f1c871; /* Add the border color */
+  width: calc(33.33% - 20px); /* Adjust the width to fit three cards on one row */
+  margin: 10px; /* Add margin between cards */
+  box-sizing: border-box; /* Include border in the calculated width */
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+  background-color: #8064A2;
+}
+
+p {
+  text-align: center;
 }

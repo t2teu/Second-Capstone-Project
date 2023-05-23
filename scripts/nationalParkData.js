@@ -6961,32 +6961,32 @@ function toggleParkTypeDropdown() {
 }
 
 function populateLocationDropdown() {
-    const defaultOption = document.createElement('option');
-    defaultOption.value = '';
-    defaultOption.textContent = 'All National Parks';
-    locationSelect.appendChild(defaultOption);
-  
-    locationsArray.forEach(location => {
-      const option = document.createElement('option');
-      option.value = location;
-      option.textContent = location;
-      locationSelect.appendChild(option);
-    });
-  }
-  
-  function populateParkTypeDropdown() {
-    const defaultOption = document.createElement('option');
-    defaultOption.value = '';
-    defaultOption.textContent = 'Choose a Park Type';
-    parkTypeSelect.appendChild(defaultOption);
-  
-    parkTypesArray.forEach(parkType => {
-      const option = document.createElement('option');
-      option.value = parkType;
-      option.textContent = parkType;
-      parkTypeSelect.appendChild(option);
-    });
-  }
+  const defaultOption = document.createElement('option');
+  defaultOption.value = '';
+  defaultOption.textContent = 'All National Parks';
+  locationSelect.appendChild(defaultOption);
+
+  locationsArray.forEach(location => {
+    const option = document.createElement('option');
+    option.value = location;
+    option.textContent = location;
+    locationSelect.appendChild(option);
+  });
+}
+
+function populateParkTypeDropdown() {
+  const defaultOption = document.createElement('option');
+  defaultOption.value = '';
+  defaultOption.textContent = 'Choose a Park Type';
+  parkTypeSelect.appendChild(defaultOption);
+
+  parkTypesArray.forEach(parkType => {
+    const option = document.createElement('option');
+    option.value = parkType;
+    option.textContent = parkType;
+    parkTypeSelect.appendChild(option);
+  });
+}
 
 function search(selectedLocation, selectedParkType) {
   const results = nationalParksArray.filter(park => {
@@ -7007,59 +7007,61 @@ function search(selectedLocation, selectedParkType) {
 }
 
 function handleSearch() {
-    const selectedLocation = locationSelect.value;
-    const selectedParkType = parkTypeSelect.value;
-    const results = search(selectedLocation, selectedParkType);
-    searchResults.innerHTML = '';
-  
-    if (results.length > 0) {
-      const gridContainer = document.createElement('div');
-      gridContainer.classList.add('row', 'row-cols-1', 'row-cols-md-2', 'row-cols-lg-3', 'g-4');
-  
-      results.forEach(result => {
-        const parkCard = document.createElement('div');
-        parkCard.classList.add('card');
-  
-        const parkCardBody = document.createElement('div');
-        parkCardBody.classList.add('card-body');
-  
-        const parkTitle = document.createElement('h5');
-        parkTitle.classList.add('card-title');
-        parkTitle.textContent = result.LocationName;
-  
-        const parkAddress = document.createElement('p');
-        parkAddress.classList.add('card-text');
-        parkAddress.textContent = `${result.Address}, ${result.City}, ${result.State}, ${result.ZipCode}`;
-  
-        const parkPhone = document.createElement('p');
-        parkPhone.classList.add('card-text');
-        parkPhone.textContent = `Phone: ${result.Phone}`;
-  
-        const parkFax = document.createElement('p');
-        parkFax.classList.add('card-text');
-        parkFax.textContent = `Fax: ${result.Fax}`;
-  
-        const parkLink = document.createElement('a');
-        parkLink.classList.add('btn', 'btn-primary');
-        parkLink.href = result.Visit;
-        parkLink.textContent = 'Visit Website';
-  
-        parkCardBody.appendChild(parkTitle);
-        parkCardBody.appendChild(parkAddress);
-        parkCardBody.appendChild(parkPhone);
-        parkCardBody.appendChild(parkFax);
-        parkCardBody.appendChild(parkLink);
-        parkCard.appendChild(parkCardBody);
-        gridContainer.appendChild(parkCard);
-      });
-  
-      searchResults.appendChild(gridContainer);
-    } else {
-      const noResultsElement = document.createElement('p');
-      noResultsElement.textContent = 'No parks found.';
-      searchResults.appendChild(noResultsElement);
-    }
+  const selectedLocation = locationSelect.value;
+  const selectedParkType = parkTypeSelect.value;
+  const results = search(selectedLocation, selectedParkType);
+  searchResults.innerHTML = '';
+
+  if (results.length > 0) {
+    const gridContainer = document.createElement('div');
+    gridContainer.classList.add('row', 'row-cols-1', 'row-cols-md-3', 'row-cols-lg-4', 'g-4');
+
+    results.forEach(result => {
+      const parkCard = document.createElement('div');
+      parkCard.style.backgroundColor = '#f8f8a0';
+      parkCard.classList.add('custom-card'); // Add custom class for styling
+
+      const parkCardBody = document.createElement('div');
+      parkCardBody.classList.add('card-body');
+
+      const parkTitle = document.createElement('h5');
+      parkTitle.classList.add('card-title');
+      parkTitle.textContent = result.LocationName;
+
+      const parkAddress = document.createElement('p');
+      parkAddress.classList.add('card-text');
+      parkAddress.textContent = `${result.Address}, ${result.City}, ${result.State}, ${result.ZipCode}`;
+
+      const parkPhone = document.createElement('p');
+      parkPhone.classList.add('card-text');
+      parkPhone.textContent = `Phone: ${result.Phone}`;
+
+      const parkFax = document.createElement('p');
+      parkFax.classList.add('card-text');
+      parkFax.textContent = `Fax: ${result.Fax}`;
+
+      const parkLink = document.createElement('a');
+      parkLink.classList.add('btn', 'btn-primary');
+      parkLink.href = result.Visit;
+      parkLink.textContent = 'Visit Website';
+
+      parkCardBody.appendChild(parkTitle);
+      parkCardBody.appendChild(parkAddress);
+      parkCardBody.appendChild(parkPhone);
+      parkCardBody.appendChild(parkFax);
+      parkCardBody.appendChild(parkLink);
+      parkCard.appendChild(parkCardBody);
+      gridContainer.appendChild(parkCard);
+    });
+
+    searchResults.appendChild(gridContainer);
+  } else {
+    const noResultsElement = document.createElement('p');
+    noResultsElement.textContent = 'No parks found.';
+    searchResults.appendChild(noResultsElement);
   }
+}
+
   
   
 

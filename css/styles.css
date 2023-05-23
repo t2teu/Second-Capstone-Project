@@ -99,3 +99,7 @@ p {
 
   animation: teleport 0.5s infinite steps(1);
 }
+
+#faraway {
+  margin-top: 100000px;
+}
