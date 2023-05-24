@@ -3,12 +3,17 @@
     src: url(../images/pokemon-ds-font.ttf);
   }
   
- * {
+  * {
     font-family: 'Pokemon Font', serif;
-    color: rgb(80,80,88);
     font-size: 40px;
-    text-shadow: 2px 4px 4px rgb(161,161,162);
-    }
+    -webkit-text-fill-color: rgb(255, 255, 255);
+    text-shadow: 0px 2px 0px rgba(50, 50, 50, 1),
+                 0px 2px 0px rgba(50, 50, 50, 1),
+                 2px 2px 0px rgba(50, 50, 50, 1),
+                 0px 2px 0px rgba(50, 50, 50, 1),
+                 2px 0px 0px rgba(50, 50, 50, 1),
+                 2px 0px 0px rgba(50, 50, 50, 1);
+  }
 
   body {
     margin: 0;
@@ -39,7 +44,7 @@
     bottom: 0;
     left: 20px;
     animation-name: scroll-up;
-    animation-duration: 90s;
+    animation-duration: 110s;
     animation-timing-function: linear;
     animation-fill-mode: forwards;
   }

@@ -6988,28 +6988,36 @@ function populateParkTypeDropdown() {
   });
 }
 
-function search(selectedLocation, selectedParkType) {
-  const results = nationalParksArray.filter(park => {
-    if (selectedLocation && selectedParkType) {
-      return (
-        park.State === selectedLocation &&
-        park.LocationName.includes(selectedParkType)
-      );
-    } else if (selectedLocation) {
-      return park.State === selectedLocation;
-    } else if (selectedParkType) {
-      return park.LocationName.includes(selectedParkType);
-    }
-    return true;
-  });
+function search(selectedLocation, selectedParkType, searchText) {
+    const results = nationalParksArray.filter(park => {
+      if (searchText) {
+        return (
+          park.LocationName.toLowerCase().includes(searchText.toLowerCase()) ||
+          park.Address.toLowerCase().includes(searchText.toLowerCase()) ||
+          park.City.toLowerCase().includes(searchText.toLowerCase()) ||
+          park.State.toLowerCase().includes(searchText.toLowerCase())
+        );
+      } else if (selectedLocation && selectedParkType) {
+        return (
+          park.State === selectedLocation &&
+          park.LocationName.includes(selectedParkType)
+        );
+      } else if (selectedLocation) {
+        return park.State === selectedLocation;
+      } else if (selectedParkType) {
+        return park.LocationName.includes(selectedParkType);
+      }
+      return true;
+    });
+  
+    return results;
+  }
 
-  return results;
-}
-
-function handleSearch() {
+ function handleSearch() {
   const selectedLocation = locationSelect.value;
   const selectedParkType = parkTypeSelect.value;
-  const results = search(selectedLocation, selectedParkType);
+  const searchText = document.getElementById('searchText').value;
+  const results = search(selectedLocation, selectedParkType, searchText);
   searchResults.innerHTML = '';
 
   if (results.length > 0) {
@@ -7072,6 +7080,29 @@ searchBtn.addEventListener('click', handleSearch);
 // Initially hide the dropdowns
 locationDropdownContainer.style.display = 'none';
 parkTypeDropdownContainer.style.display = 'none';
+
+// Add event listeners to input fields
+locationSelect.addEventListener('keypress', handleKeyPress);
+parkTypeSelect.addEventListener('keypress', handleKeyPress);
+
+// Event handler for key press
+function handleKeyPress(event) {
+  if (event.keyCode === 13) {
+    // Enter key pressed
+    handleSearch();
+  }
+}
+
+const searchText = document.getElementById('searchText');
+searchText.addEventListener('keypress', handleKeyPress);
+
+// Event handler for key press
+function handleKeyPress(event) {
+  if (event.keyCode === 13) {
+    // Enter key pressed
+    handleSearch();
+  }
+}
 
 populateLocationDropdown();
 populateParkTypeDropdown();

@@ -144,3 +144,8 @@ h3 {
         color: black;
         font-size: 23px;
       }
+
+      
+.form-select {
+  width: 300px;
+}

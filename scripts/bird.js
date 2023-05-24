@@ -12,6 +12,20 @@ linksWithBird.forEach(link => {
 
         setTimeout(() => {
             window.location.href = link.href;
-        }, 2000); // Adjust the delay to match the CSS animation duration
+        }, 2000);
     });
 });
+
+   function playFlySound() {
+    var flySound = new Audio("images/fly.mp3");
+    flySound.addEventListener("canplaythrough", function() {
+      flySound.volume = 0.5;
+      flySound.play();
+    });
+  }
+
+  // Add click event listeners to the red-square buttons
+  var redSquareButtons = document.querySelectorAll(".img-fluid");
+  redSquareButtons.forEach(function(button) {
+    button.addEventListener("click", playFlySound);
+  });

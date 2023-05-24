@@ -88,5 +88,10 @@ button {
 }
 
 p {
+  font-size: 30px;
   text-align: center;
+}
+
+#searchtext {
+  width: 300px;
 }
