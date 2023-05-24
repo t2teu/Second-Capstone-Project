@@ -57,3 +57,15 @@
       transform: translateY(-200%);
     }
   }
+
+  .invisible-box {
+    position: fixed;
+    bottom: 98px;
+    right: 150px;
+    width: 160px;
+    height: 140px;
+    margin: 20px;
+    background-color: transparent;
+    cursor: pointer;
+    z-index: 9999;
+}

@@ -148,4 +148,12 @@ h3 {
       
 .form-select {
   width: 300px;
+  border: 2px solid #000;
+  border-radius: 0;
+}
+
+.card {
+  border-radius: 0;
+  border: 2px solid #000;
+  width: 400px;
 }
