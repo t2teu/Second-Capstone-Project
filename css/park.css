@@ -77,10 +77,10 @@ button {
 }
 
 .custom-card {
-  border: 10px solid #f1c871; /* Add the border color */
-  width: calc(33.33% - 20px); /* Adjust the width to fit three cards on one row */
-  margin: 10px; /* Add margin between cards */
-  box-sizing: border-box; /* Include border in the calculated width */
+  border: 10px solid #f1c871;
+  width: calc(33.33% - 20px);
+  margin: 10px;
+  box-sizing: border-box;
 }
 
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {

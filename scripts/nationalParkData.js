@@ -7077,18 +7077,14 @@ searchByStateCheckbox.addEventListener('change', toggleLocationDropdown);
 searchByTypeCheckbox.addEventListener('change', toggleParkTypeDropdown);
 searchBtn.addEventListener('click', handleSearch);
 
-// Initially hide the dropdowns
 locationDropdownContainer.style.display = 'none';
 parkTypeDropdownContainer.style.display = 'none';
 
-// Add event listeners to input fields
 locationSelect.addEventListener('keypress', handleKeyPress);
 parkTypeSelect.addEventListener('keypress', handleKeyPress);
 
-// Event handler for key press
 function handleKeyPress(event) {
   if (event.keyCode === 13) {
-    // Enter key pressed
     handleSearch();
   }
 }
@@ -7096,10 +7092,8 @@ function handleKeyPress(event) {
 const searchText = document.getElementById('searchText');
 searchText.addEventListener('keypress', handleKeyPress);
 
-// Event handler for key press
 function handleKeyPress(event) {
   if (event.keyCode === 13) {
-    // Enter key pressed
     handleSearch();
   }
 }

@@ -83,11 +83,11 @@ p {
 
 @media (max-width: 767px) {
   #textbox {
-    height: 60px; /* Adjust the height as per your requirements */
+    height: 60px;
   }
   
   .col-sm-6 {
-    flex: 0 0 50%; /* Display columns side by side */
+    flex: 0 0 50%;
     max-width: 50%;
   }
 }

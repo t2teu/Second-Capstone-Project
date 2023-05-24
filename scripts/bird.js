@@ -1,23 +1,23 @@
 const linksWithBird = document.querySelectorAll('.link-with-bird');
 
 linksWithBird.forEach(link => {
-  let birdAppended = false; // Flag to track if the bird has been appended
+  let birdAppended = false;
 
   link.addEventListener('click', (event) => {
     event.preventDefault();
 
-    if (!birdAppended) { // Check if the bird has not been appended yet
+    if (!birdAppended) {
       const birdImage = document.createElement('img');
       birdImage.src = 'images/bird.png';
       birdImage.alt = 'Bird';
       birdImage.classList.add('bird-image');
       link.appendChild(birdImage);
 
-      birdAppended = true; // Set the flag to indicate that the bird has been appended
+      birdAppended = true;
     }
 
     setTimeout(() => {
-      playFlySound(); // Play the fly sound
+      playFlySound();
       window.location.href = link.href;
     }, 2000);
   });
