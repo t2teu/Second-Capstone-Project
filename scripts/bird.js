@@ -24,7 +24,7 @@ linksWithBird.forEach(link => {
 });
 
 function playFlySound() {
-  var flySound = new Audio("images/fly.mp3");
+  const flySound = new Audio("images/fly.mp3");
   flySound.addEventListener("canplaythrough", function() {
     flySound.volume = 0.5;
     flySound.play();
