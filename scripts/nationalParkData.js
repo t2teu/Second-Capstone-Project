@@ -6947,7 +6947,7 @@ function toggleLocationDropdown() {
     locationDropdownContainer.style.display = 'block';
   } else {
     locationDropdownContainer.style.display = 'none';
-    locationSelect.value = ''; // Clear the selected value
+    locationSelect.value = '';
   }
 }
 
@@ -6956,7 +6956,7 @@ function toggleParkTypeDropdown() {
     parkTypeDropdownContainer.style.display = 'block';
   } else {
     parkTypeDropdownContainer.style.display = 'none';
-    parkTypeSelect.value = ''; // Clear the selected value
+    parkTypeSelect.value = '';
   }
 }
 
@@ -6988,46 +6988,38 @@ function populateParkTypeDropdown() {
   });
 }
 
-function search(selectedLocation, selectedParkType, searchText) {
-    const results = nationalParksArray.filter(park => {
-      if (searchText) {
-        return (
-          park.LocationName.toLowerCase().includes(searchText.toLowerCase()) ||
-          park.Address.toLowerCase().includes(searchText.toLowerCase()) ||
-          park.City.toLowerCase().includes(searchText.toLowerCase()) ||
-          park.State.toLowerCase().includes(searchText.toLowerCase())
-        );
-      } else if (selectedLocation && selectedParkType) {
-        return (
-          park.State === selectedLocation &&
-          park.LocationName.includes(selectedParkType)
-        );
-      } else if (selectedLocation) {
-        return park.State === selectedLocation;
-      } else if (selectedParkType) {
-        return park.LocationName.includes(selectedParkType);
-      }
-      return true;
-    });
-  
-    return results;
-  }
+function search(selectedLocation, selectedParkType) {
+  const results = nationalParksArray.filter(park => {
+    if (selectedLocation && selectedParkType) {
+      return (
+        park.State === selectedLocation &&
+        park.LocationName.includes(selectedParkType)
+      );
+    } else if (selectedLocation) {
+      return park.State === selectedLocation;
+    } else if (selectedParkType) {
+      return park.LocationName.includes(selectedParkType);
+    }
+    return true;
+  });
 
- function handleSearch() {
+  return results;
+}
+
+function handleSearch() {
   const selectedLocation = locationSelect.value;
   const selectedParkType = parkTypeSelect.value;
-  const searchText = document.getElementById('searchText').value;
-  const results = search(selectedLocation, selectedParkType, searchText);
+  const results = search(selectedLocation, selectedParkType);
   searchResults.innerHTML = '';
 
   if (results.length > 0) {
     const gridContainer = document.createElement('div');
-    gridContainer.classList.add('row', 'row-cols-1', 'row-cols-md-3', 'row-cols-lg-4', 'g-4');
+    gridContainer.classList.add('row', 'row-col-1', 'row-col-md-3', 'row-col-lg-4', 'g-4');
 
     results.forEach(result => {
       const parkCard = document.createElement('div');
       parkCard.style.backgroundColor = '#f8f8a0';
-      parkCard.classList.add('custom-card'); // Add custom class for styling
+      parkCard.classList.add('custom-card');
 
       const parkCardBody = document.createElement('div');
       parkCardBody.classList.add('card-body');
@@ -7079,24 +7071,6 @@ searchBtn.addEventListener('click', handleSearch);
 
 locationDropdownContainer.style.display = 'none';
 parkTypeDropdownContainer.style.display = 'none';
-
-locationSelect.addEventListener('keypress', handleKeyPress);
-parkTypeSelect.addEventListener('keypress', handleKeyPress);
-
-function handleKeyPress(event) {
-  if (event.keyCode === 13) {
-    handleSearch();
-  }
-}
-
-const searchText = document.getElementById('searchText');
-searchText.addEventListener('keypress', handleKeyPress);
-
-function handleKeyPress(event) {
-  if (event.keyCode === 13) {
-    handleSearch();
-  }
-}
 
 populateLocationDropdown();
 populateParkTypeDropdown();

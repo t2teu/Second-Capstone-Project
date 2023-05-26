@@ -44,14 +44,14 @@
     bottom: 0;
     left: 20px;
     animation-name: scroll-up;
-    animation-duration: 110s;
+    animation-duration: 95s;
     animation-timing-function: linear;
     animation-fill-mode: forwards;
   }
 
   @keyframes scroll-up {
     0% {
-      transform: translateY(100vh);
+      transform: translateY(180vh);
     }
     100% {
       transform: translateY(-200%);

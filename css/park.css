@@ -92,6 +92,8 @@ p {
   text-align: center;
 }
 
-#searchtext {
+#searchText {
   width: 300px;
+  visibility: hidden;
 }
+
